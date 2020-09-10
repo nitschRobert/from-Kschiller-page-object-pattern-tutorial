@@ -3,7 +3,7 @@ import pages.PracticeMainPage;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class LocatePageElements extends FunctionalTest {
+public class CreditCardIconTest extends FunctionalTest {
 
     @Test
     public void LocateElements() {
