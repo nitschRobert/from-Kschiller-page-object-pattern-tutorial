@@ -15,5 +15,7 @@ public class CreditCardIconTest extends FunctionalTest {
         assertTrue(automationPracticeMainPage.searchButtonIsVisible());
 
         assertEquals("My Store", driver.getTitle());
+
+        automationPracticeMainPage.goToWomenTab();
     }
 }

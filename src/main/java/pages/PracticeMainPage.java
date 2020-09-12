@@ -12,10 +12,16 @@ public class PracticeMainPage extends PageObject {
     @FindBy(className = "button-search")
     private WebElement searchButton;
 
+    @FindBy(linkText = "Women")
+    private WebElement womenButton;
+
     public PracticeMainPage(WebDriver driver) { super(driver);}
 
     public boolean creditCardIconIsVisible() { return creditCardIcon.isDisplayed();}
 
     public boolean searchButtonIsVisible() {return searchButton.isDisplayed();}
 
+    public void goToWomenTab() {
+        womenButton.click();
+    }
 }
