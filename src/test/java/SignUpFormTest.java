@@ -1,10 +1,12 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import BasicTestClass.BasicTestClass;
 import org.junit.Test;
 import pages.ReceiptPage;
 import pages.SignUpPage;
 
-public class SignUpFormTest extends FunctionalTest {
+public class SignUpFormTest extends BasicTestClass {
 
 	@Test
 	public void signUp(){

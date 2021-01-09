@@ -21,7 +21,7 @@ public class DemoWebShopTest1 {
         Random random = new Random();
         WebDriver driver = new ChromeDriver();
 
-        WebDriverWait wait = new WebDriverWait(driver,3);
+        WebDriverWait wait = new WebDriverWait(driver,6);
 
 //Open Web Shop
         driver.navigate().to("http://demowebshop.tricentis.com");
@@ -45,9 +45,9 @@ public class DemoWebShopTest1 {
         WebElement loginButton = driver.findElement(By.xpath("//input[@class='button-1 login-button' and @type='submit']"));
         loginButton.click();
 
-        WebElement logoutIcon = driver.findElement(By.xpath("//a[starts-with(@href,'/logout') and @class='ico-logout']"));
+        WebElement logoutButton= driver.findElement(By.xpath("//a[starts-with(@href,'/logout') and @class='ico-logout']"));
         //wait.until(ExpectedConditions.visibilityOfAllElements(loginIcon));
-        Assertions.assertTrue(logoutIcon.isEnabled());
+        Assertions.assertTrue(logoutButton.isEnabled());
 
 //Navigate to Apparel and Shoes
                 /*   WebElement apparelShoesIcon = driver.findElement(By.xpath("//a[starts-with(@href,'/apparel-shoes')]"));
@@ -142,6 +142,41 @@ public class DemoWebShopTest1 {
         //cardCode.sendKeys(random.n(1000));
         cardCode.sendKeys("1000");
 
+        WebElement paymentInfoContinueButton = driver.findElement(By.xpath("//*[@class='button-1 payment-info-next-step-button']"));
+        paymentInfoContinueButton.click();
+
+
+//Verification of Prices
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//*[@class='cart-total-right'])[1]")));
+
+        WebElement subTotalPrice = driver.findElement(By.xpath("(//*[@class='cart-total-right'])[1]"));
+        Assertions.assertEquals("25.00", subTotalPrice.getText());
+
+        WebElement shippingCost = driver.findElement(By.xpath("(//*[@class='cart-total-right'])[2]"));
+        Assertions.assertEquals("0.00",shippingCost.getText());
+
+        WebElement totalPrice = driver.findElement(By.xpath("(//*[@class='cart-total-right'])[4]"));
+        Assertions.assertEquals("25.00", totalPrice.getText());
+
+//Confirm the Order
+
+        WebElement confirmOrderButton = driver.findElement(By.xpath("//input[@value='Confirm']"));
+        confirmOrderButton.click();
+
+//Verify the Order Success
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='title']/strong")));
+
+        WebElement orderSuccessMessage = driver.findElement(By.xpath("//div[@class='title']/strong"));
+        Assertions.assertEquals("Your order has been successfully processed!", orderSuccessMessage.getText());
+
+//Close Web Shop
+        WebElement orderSuccessContinue = driver.findElement(By.xpath("//input[contains(@class,'button-2 order-completed-continue-button')]"));
+        orderSuccessContinue.click();
+
+        wait.until(ExpectedConditions.titleIs("Demo Web Shop"));
+
+        WebElement logout = driver.findElement(By.xpath("//a[starts-with(@href,'/logout') and @class='ico-logout']"));
+        logout.click();
 
         driver.close();
     }

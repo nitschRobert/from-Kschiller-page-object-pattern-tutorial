@@ -1,9 +1,10 @@
+import BasicTestClass.BasicTestClass;
 import org.junit.Test;
 import pages.PracticeMainPage;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class CreditCardIconTest extends FunctionalTest {
+public class CreditCardIconTest extends BasicTestClass {
 
     @Test
     public void LocateElements() {
