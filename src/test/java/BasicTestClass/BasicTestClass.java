@@ -30,9 +30,8 @@ public class BasicTestClass {
 		driver.manage().deleteAllCookies();
 	}
 	
-/*	@AfterClass
+	@AfterClass
 	public static void tearDown(){
 		driver.close();
 	}
-	*/
 }

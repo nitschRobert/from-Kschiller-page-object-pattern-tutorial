@@ -6,12 +6,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.asserts.Assertion;
-import java.util.List;
 import java.util.Random;
 
 public class DemoWebShopTest1 {
@@ -20,12 +17,10 @@ public class DemoWebShopTest1 {
     public void demoShopTest() {
         Random random = new Random();
         WebDriver driver = new ChromeDriver();
-
         WebDriverWait wait = new WebDriverWait(driver,6);
 
 //Open Web Shop
         driver.navigate().to("http://demowebshop.tricentis.com");
-
         driver.manage().window().maximize();
 
 //Navigate to Log in Page
@@ -120,7 +115,6 @@ public class DemoWebShopTest1 {
         paymentMethodContinueButton.click();
 
 // Payment Information
-
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//select[@id='CreditCardType']")));
 
         Select creditCard = new Select(driver.findElement(By.xpath("//select[@id='CreditCardType']")));
@@ -145,7 +139,6 @@ public class DemoWebShopTest1 {
         WebElement paymentInfoContinueButton = driver.findElement(By.xpath("//*[@class='button-1 payment-info-next-step-button']"));
         paymentInfoContinueButton.click();
 
-
 //Verification of Prices
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//*[@class='cart-total-right'])[1]")));
 
@@ -159,7 +152,6 @@ public class DemoWebShopTest1 {
         Assertions.assertEquals("25.00", totalPrice.getText());
 
 //Confirm the Order
-
         WebElement confirmOrderButton = driver.findElement(By.xpath("//input[@value='Confirm']"));
         confirmOrderButton.click();
 
@@ -177,7 +169,6 @@ public class DemoWebShopTest1 {
 
         WebElement logout = driver.findElement(By.xpath("//a[starts-with(@href,'/logout') and @class='ico-logout']"));
         logout.click();
-
         driver.close();
     }
 }

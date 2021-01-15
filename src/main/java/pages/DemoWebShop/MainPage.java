@@ -16,6 +16,9 @@ public class MainPage extends PageObject {
     @FindBy(xpath = "//ul[@class='top-menu']/li/a[starts-with(@href,'/apparel-shoes')]")
     private WebElement apparelShoesIcon;
 
+    @FindBy(xpath = "//a[starts-with(@href,'/logout') and @class='ico-logout']")
+    private WebElement logoutIcon;
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -33,4 +36,10 @@ public class MainPage extends PageObject {
         loginIcon.click();
         return new LogInPage(driver);
     }
+
+    public void logOut() {
+        logoutIcon.click();
+    }
+
+    public boolean loginIconIsDisplyed() { return loginIcon.isDisplayed();}
 }

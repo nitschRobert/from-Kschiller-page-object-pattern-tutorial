@@ -143,7 +143,6 @@ public class DemoWebShopTest2 {
 //Confirm the Order
         WebElement confirmOrderButton = driver.findElement(By.xpath("//input[@value='Confirm']"));
         confirmOrderButton.click();
-
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='title']/strong")));
 
 //Verify the Order Success
@@ -158,7 +157,6 @@ public class DemoWebShopTest2 {
 
         WebElement logout = driver.findElement(By.xpath("//a[starts-with(@href,'/logout') and @class='ico-logout']"));
         logout.click();
-
         driver.close();
     }
 }

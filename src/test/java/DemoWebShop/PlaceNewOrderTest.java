@@ -52,5 +52,13 @@ public class PlaceNewOrderTest extends BasicTestClass {
 		Assert.assertEquals("25.00", checkoutPage.getTotalPrice());
 
 		checkoutPage.orderConfirmation();
+		Thread.sleep(500);
+		Assert.assertEquals("Your order has been successfully processed!", checkoutPage.orderSuccess());
+
+		MainPage mainPage1 = checkoutPage.orderCompletedContinue();
+		mainPage1.logOut();
+		Assert.assertTrue(mainPage1.loginIconIsDisplyed());
+
+		driver.close();
 	}
 }

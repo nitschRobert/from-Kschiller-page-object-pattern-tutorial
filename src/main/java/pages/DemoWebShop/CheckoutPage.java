@@ -56,6 +56,12 @@ public class CheckoutPage extends PageObject {
     @FindBy(xpath = "//input[@value='Confirm']")
     private WebElement confirmOrder;
 
+    @FindBy(xpath = "//div[@class='title']/strong")
+    private WebElement orderSuccessMessage;
+
+    @FindBy(xpath = "//input[contains(@class,'button-2 order-completed-continue-button')]")
+    private WebElement checkoutCompletedContinue;
+
 
     public CheckoutPage(WebDriver driver) {
         super(driver);
@@ -126,5 +132,14 @@ public class CheckoutPage extends PageObject {
 
     public void orderConfirmation(){
        confirmOrder.click();
+    }
+
+    public String orderSuccess(){
+        return orderSuccessMessage.getText();
+    }
+
+    public MainPage orderCompletedContinue() {
+        checkoutCompletedContinue.click();
+        return new MainPage(driver);
     }
 }
