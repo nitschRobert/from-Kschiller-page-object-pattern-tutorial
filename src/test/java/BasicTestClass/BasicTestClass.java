@@ -20,11 +20,11 @@ public class BasicTestClass {
 	@BeforeClass
 	public static void setUp(){
 		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		wait = new WebDriverWait(driver,6);
 	}
-	
+
 	@After
 	public void cleanUp(){
 		driver.manage().deleteAllCookies();

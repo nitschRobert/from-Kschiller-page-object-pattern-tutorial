@@ -31,13 +31,10 @@ public class PlaceNewOrderTest extends BasicTestClass {
 
 		CheckoutPage checkoutPage = shoppingCartPage.goToCheckout();
 		checkoutPage.goToShippingAddress();
-		Thread.sleep(500);
 		checkoutPage.setInStorePickupCheckbox();
 		checkoutPage.goToPaymentMethod();
-		Thread.sleep(500);
 		checkoutPage.selectCreditCard();
 		checkoutPage.goToPaymentInformation();
-		Thread.sleep(500);
 		checkoutPage.selectCreditCardType("Visa");
 		checkoutPage.enterCardholderName("randomText");
 		checkoutPage.enterCardNumber("4485564059489345");
@@ -45,20 +42,16 @@ public class PlaceNewOrderTest extends BasicTestClass {
 		checkoutPage.selectExpirationYear("2024");
 		checkoutPage.enterCardCode("1000");
 		checkoutPage.goToConfirmOrder();
-		Thread.sleep(500);
 
 		Assert.assertEquals("25.00", checkoutPage.getSubtotal());
 		Assert.assertEquals("0.00", checkoutPage.getShippingCost());
 		Assert.assertEquals("25.00", checkoutPage.getTotalPrice());
 
 		checkoutPage.orderConfirmation();
-		Thread.sleep(500);
 		Assert.assertEquals("Your order has been successfully processed!", checkoutPage.orderSuccess());
 
 		MainPage mainPage1 = checkoutPage.orderCompletedContinue();
 		mainPage1.logOut();
 		Assert.assertTrue(mainPage1.loginIconIsDisplyed());
-
-		driver.close();
 	}
 }
