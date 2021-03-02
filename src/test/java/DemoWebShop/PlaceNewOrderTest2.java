@@ -1,9 +1,11 @@
 package DemoWebShop;
 
 import BasicTestClass.BasicTestClass;
-import org.junit.Assert;
+
 import org.junit.Test;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import pages.DemoWebShop.*;
 
 public class PlaceNewOrderTest2 extends BasicTestClass {
@@ -52,6 +54,10 @@ public class PlaceNewOrderTest2 extends BasicTestClass {
 		Assert.assertEquals("25.00", checkoutPage.getSubtotal());
 		Assert.assertEquals("0.00", checkoutPage.getShippingCost());
 		Assert.assertEquals("25.00", checkoutPage.getTotalPrice());
+//void assertEquals(boolean expected, boolean actual) - compares the two given values / objects and checks if they are equal
+
+		Assert.assertFalse(checkoutPage.getTotalPrice() == "0.00");
+//void assertFalse(boolean condition) -checks whether the condition is false
 
 		checkoutPage.orderConfirmation();
 		Assert.assertEquals("Your order has been successfully processed!", checkoutPage.orderSuccess());
@@ -59,5 +65,6 @@ public class PlaceNewOrderTest2 extends BasicTestClass {
 		checkoutPage.orderCompletedContinue();
 		mainPage.logOut();
 		Assert.assertTrue(mainPage.loginIconIsDisplyed());
+//assertTrue(boolean condition) - checks if the condition is true
 	}
 }
