@@ -1,17 +1,17 @@
 package Seleniumui_Moderntester;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import java.util.concurrent.TimeUnit;
 
-import javax.annotation.CheckReturnValue;
-
-public class AutomationPraticeForm {
+public class AutomationPracticeForm {
 
     @Test
     public void practiceFormReview() {
@@ -19,18 +19,22 @@ public class AutomationPraticeForm {
         option.addArguments("start-maximized");
 
         WebDriver driver = new ChromeDriver(option);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         driver.navigate().to("https://seleniumui.moderntester.pl/form.php");
        // driver.manage().window().maximize();
-
         Assert.assertEquals(driver.getCurrentUrl(),"https://seleniumui.moderntester.pl/form.php");
-
-        //elements
 
         WebElement header = driver.findElement(By.className("display-4"));
         Assert.assertEquals(header.getText(),"Automation Pratice Form");
 
-//        WebElement firstName;
+        WebElement firstName = driver.findElement(By.id("inputFirstName3"));
+        Actions actions = new Actions(driver);
+        Action clickAndHold = actions.clickAndHold(firstName).build();
+        clickAndHold.perform();
+        Action doubleClick = actions.doubleClick(firstName).build();
+        doubleClick.perform();
+
 //        WebElement lastName;
 //        WebElement emailAddress;
 //        WebElement age;
